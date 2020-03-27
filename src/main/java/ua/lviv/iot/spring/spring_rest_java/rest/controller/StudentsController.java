@@ -1,9 +1,11 @@
 package ua.lviv.iot.spring.spring_rest_java.rest.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ua.lviv.iot.spring.spring_rest_java.business.StudentService;
 import ua.lviv.iot.spring.spring_rest_java.rest.model.Student;
 
 import java.util.HashMap;
@@ -18,6 +20,8 @@ public class StudentsController {
 
     private Map<Integer, Student> students = new HashMap<>();
     private AtomicInteger IdCounter = new AtomicInteger();
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping
     public List<Student> getAllStudents() {
@@ -25,7 +29,7 @@ public class StudentsController {
     }
 
     @GetMapping(path = "/{id}")
-    public Student getStudent(@PathVariable("id") Integer studentId) {
+    public Student getStudent(final @PathVariable("id") Integer studentId) {
         return students.get(studentId);
     }
 
@@ -37,7 +41,7 @@ public class StudentsController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Student> deleteStudent(@PathVariable("id") Integer studentId) {
+    public ResponseEntity<Student> deleteStudent(final @PathVariable("id") Integer studentId) {
         HttpStatus status = students.remove(studentId) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
         return ResponseEntity.status(status).build();
     }
