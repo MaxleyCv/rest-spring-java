@@ -1,4 +1,4 @@
-package ua.lviv.iot.spring.spring_rest_java.rest;
+package ua.lviv.iot.spring.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
