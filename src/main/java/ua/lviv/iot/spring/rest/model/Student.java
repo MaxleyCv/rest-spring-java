@@ -1,9 +1,9 @@
-package ua.lviv.iot.spring.spring_rest_java.rest.model;
+package ua.lviv.iot.spring.rest.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 
 @Entity
 public class Student {
@@ -13,6 +13,12 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "group_id")
+    @JsonIgnoreProperties("students")
+    private Group group;
 
     public Student() {
 
@@ -47,4 +53,11 @@ public class Student {
         this.lastName = lastName;
     }
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 }
