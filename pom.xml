@@ -8,7 +8,7 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ua.lviv.iot.spring.spring_rest_java</groupId>
+    <groupId>ua.lviv.iot.spring</groupId>
     <artifactId>rest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>rest</name>
