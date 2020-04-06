@@ -28,8 +28,16 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public List<Student> findAll() {
+    public List<Student> getAllStudents() {
         return studentRepository.findAll();
+    }
+
+    public Student getStudentById(Integer id) {
+        return studentRepository.findById(id).get();
+    }
+
+    public List<Student> getAllStudentsByFirstName(String firstName) {
+        return studentRepository.findAllByFirstName(firstName);
     }
 
 }
